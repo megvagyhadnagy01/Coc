@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags">
+<ui:composition template="layout.xhtml">
+	<ui:define name="content">
+		<h:form id="utasForm">
+			<p:panel header="Utas Info" id="utasInfoPnl">
+				<h:panelGrid columns="2">
+					<p:outputLabel for="vnev" value="Utas vezetéknév: " />
+					<p:inputText id="vnev" size="40"
+						value="#{utasController.utasUITO.vnev}" required="true"
+						requiredMessage="Please enter utas vezetéknév" />
+					<p:outputLabel for="knev" value="Utas keresztnév: " />
+					<p:inputText id="knev" size="40"
+						value="#{utasController.utasUITO.knev}" required="true" requiredMessage="Please enter utas keresztnév" />
+					<p:outputLabel for="utastel" value="Telefon: " />
+					<p:inputText id="utastel"
+						value="#{utasController.utasUITO.telefon}" size="40"
+						required="true" label="Telefonszám">
+
+<!--						<f:validator validatorId="customEmailValidator" />-->
+					</p:inputText>
+					<p:outputLabel for="utaslakcim" value="Lakcím " />
+					<p:inputTextarea id="utaslakcim" rows="4" cols="50"
+						value="#{utasController.utasUITO.lakcim}" />
+<!--					<p:outputLabel for="empdept" value="Department " />-->
+
+<!--					<p:selectOneMenu id="empdept"-->
+<!--						value="#{studController.empUiTO.departmentUITO}"-->
+<!--						style="width:150px" converter="#{deptConverter}">-->
+<!--						<f:selectItems value="#{studController.departmentUiToList}"-->
+<!--							var="departmentUITO" itemLabel="#{departmentUITO.deptName}"-->
+<!--							itemValue="#{departmentUITO}" />-->
+
+<!--					</p:selectOneMenu>-->
+					<h:commandButton value="#{utasController.actionLabel}"
+						action="#{utasController.doSaveInfoUtas}">
+						<f:ajax execute="utasForm" render="utaslist utasInfoPnl" />
+					</h:commandButton>
+				</h:panelGrid>
+			</p:panel>
+			<p:panel header="Utasok" id="utaslist">
+				<p:dataTable id="table_employee" var="utas"
+					value="#{utasController.utasUITOS}">
+					<p:column>
+						<f:facet name="header"># Vezeteknev</f:facet>
+						<h:outputText value="#{utas.vnev}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Keresztnev</f:facet>
+						<h:outputText value="#{utas.knev}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Telefon</f:facet>
+						<h:outputText value="#{utas.telefon}">
+						</h:outputText>
+					</p:column>
+					<p:column>
+						<f:facet name="header">Email</f:facet>
+						<h:outputText value="#{utas.email}">
+						</h:outputText>
+					</p:column>
+					<p:column>
+						<f:facet name="header">Lakcim</f:facet>
+						<h:outputText value="#{utas.lakcim}" />
+					</p:column>
+<!--					<p:column id="action">-->
+<!--						<f:facet name="header">Action</f:facet>-->
+<!--						<h:commandLink value="Edit"-->
+<!--							action="#{studController.editEmployee(emp)}">-->
+<!--							<f:ajax execute="action" render="empForm" />-->
+<!--						</h:commandLink> /-->
+<!--						  <sec:authorize access="hasRole('ROLE_ADMIN')">-->
+<!--							<h:commandLink value="Delete"-->
+<!--								action="#{studController.deleteEmployee(emp)}">-->
+<!--								<f:ajax execute="action" render="table" />-->
+<!--							</h:commandLink>-->
+<!--						</sec:authorize>-->
+<!--					</p:column>-->
+
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
