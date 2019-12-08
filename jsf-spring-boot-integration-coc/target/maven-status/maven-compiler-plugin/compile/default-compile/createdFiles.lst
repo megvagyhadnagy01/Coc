@@ -1,0 +1,11 @@
+com\jsfspring\curddemo\utills\DeptConverter.class
+com\jsfspring\curddemo\SpringJsfApplication.class
+com\jsfspring\curddemo\utills\JsfSpringCurd.class
+com\jsfspring\curddemo\repositry\DepartmentRepo.class
+com\jsfspring\curddemo\service\DepartmentService.class
+com\jsfspring\curddemo\service\impl\DepartmentServiceImpl.class
+com\jsfspring\curddemo\utills\SecurityConfig.class
+com\jsfspring\curddemo\uito\DepartmentUITO.class
+com\jsfspring\curddemo\utills\EmailValidator.class
+com\jsfspring\curddemo\logging\loggingAspect.class
+com\jsfspring\curddemo\entity\DepartmentDTO.class
